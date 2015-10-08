@@ -26,16 +26,18 @@ function initialiseState() {
   if (Notification.permission === 'denied') {  
     console.warn('The user has blocked notifications.');  
     return;  
+  }else{
+    // We need the service worker registration to check for a subscription  
+    navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {  
+      // Do we already have a push message subscription?  
+      console.log(serviceWorkerRegistration) 
+      serviceWorkerRegistration.showNotification('title', {
+        body: 'body',
+        icon: 'icon',
+        tag: 'tag'
+      })
+    });
   }
 
-  // We need the service worker registration to check for a subscription  
-  navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {  
-    // Do we already have a push message subscription?  
-    console.log(serviceWorkerRegistration) 
-    serviceWorkerRegistration.showNotification('title', {
-      body: 'body',
-      icon: 'icon',
-      tag: 'tag'
-    })
-  });  
+    
 }
