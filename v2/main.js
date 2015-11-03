@@ -347,12 +347,14 @@
                 navigator.serviceWorker.register('https://fagnerjs.github.io/fagnerjs/v2/service-worker.js').then(function(){
                     // verifies that supports notifications
                     if (!('showNotification' in ServiceWorkerRegistration.prototype)) {  
-                        console.warn('Notifications aren\'t supported.');  
+                        console.warn('Notifications aren\'t supported.');
+                        alert('Notifications aren\'t supported.');
                         return;  
                     }
                     // checks are allowed to notifications
                     if (Notification.permission === 'denied') {  
                         console.warn('The user has blocked notifications.');  
+                        alert('The user has blocked notifications.');  
                         return;  
                     }
                     // Handle user data and starts the binds
