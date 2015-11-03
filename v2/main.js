@@ -344,7 +344,7 @@
             that.setCookie('meuTime', 6);
 
             if('serviceWorker' in navigator) {  
-                navigator.serviceWorker.register('./service-worker.js').then(function(){
+                navigator.serviceWorker.register('https://fagnerjs.github.io/fagnerjs/v2/service-worker.js').then(function(){
                     // verifies that supports notifications
                     if (!('showNotification' in ServiceWorkerRegistration.prototype)) {  
                         console.warn('Notifications aren\'t supported.');  
