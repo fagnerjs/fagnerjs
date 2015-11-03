@@ -20,7 +20,8 @@
                         document.querySelector('.debug').innerHTML = JSON.stringify(subscription);
 
                         if(!subscription.subscriptionId){
-                          subscription.subscriptionId = subscription.endpoint.replace(/^(.*\:)/i,'');
+                            var endpointSections = subscription.endpoint.split('/');
+                            subscription.subscriptionId = endpointSections[endpointSections.length - 1];
                         }
 
                         // Set user subscription
