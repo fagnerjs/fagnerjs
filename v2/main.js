@@ -316,12 +316,16 @@
             };
             // Enalbe Button listener
             button.addEventListener('click', function(){
+                alert('init click')
                 navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
+                    alert('service work then')
                     if(that.data){
+                        alert('unsubscribe')
                         that.unsubscribe( function ( success ) {
                             success && buttonState() && tagsState();
                         });
                     }else{
+                        alert('subscribe')
                         that.subscribe( function ( success ) {
                             success && buttonState() && tagsState();
                         });
