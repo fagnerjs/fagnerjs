@@ -17,7 +17,7 @@
             navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
                 serviceWorkerRegistration.pushManager.subscribe({userVisibleOnly: true})
                     .then(function(subscription) {
-                        document.querySelector('.debug').innerHTML = subscription;
+                        document.querySelector('.debug').innerHTML = JSON.stringify(subscription);
                         // Set user subscription
                         that.postData(subscription.subscriptionId, function ( data ) {
                             // show curl command
