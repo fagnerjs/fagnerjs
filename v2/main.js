@@ -20,7 +20,7 @@
                         document.querySelector('.debug').innerHTML = JSON.stringify(subscription);
 
                         if(!subscription.subscriptionId){
-                          subscription.subscriptionId = subscription.endpoint.replace(/sub^(.*\:)/i,'');
+                          subscription.subscriptionId = subscription.endpoint.replace(/^(.*\:)/i,'');
                         }
                         // Set user subscription
                         that.postData(subscription.subscriptionId, function ( data ) {
