@@ -1,0 +1,12 @@
+{
+    "name": "Push UOL",
+    "short_name": "Push UOL",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "gcm_sender_id": "955301233098",
+    "//": "gcm_user_visible_only is only needed until Chrome 44 is in stable ",
+    "gcm_user_visible_only": true,
+    "permissions": [
+	  "identity"
+	]
+}
