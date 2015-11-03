@@ -63,7 +63,10 @@
         getSubscribe : function ( callback ) {
             navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
                 serviceWorkerRegistration.pushManager.getSubscription().then(function(pushSubscription) {
-                    console.log(pushSubscription)
+                    if(!pushSubscription.subscriptionId){
+                        var endpointSections = pushSubscription.endpoint.split('/');
+                        pushSubscription.subscriptionId = endpointSections[endpointSections.length - 1];
+                    }
                     callback instanceof Function && callback.call( null, pushSubscription);
                 }).catch(function(e) {
                     console.warn('Error thrown while unsubscribing from ' + 'push messaging.', e);
