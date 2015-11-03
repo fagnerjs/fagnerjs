@@ -178,9 +178,9 @@
             // Get subscriptionID
             that.getSubscribe( function ( subscription ) {
                 // show curl command
-                that.showCurlCommand(subscription);
                 // Check subscription
                 if(subscription){            
+                    that.showCurlCommand(subscription);
                     data = that.getStorage();
                     // Verifies the user data in localStorage
                     if(data && data.subscriptionID){
