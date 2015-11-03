@@ -17,6 +17,7 @@
             navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
                 serviceWorkerRegistration.pushManager.subscribe({userVisibleOnly: true})
                     .then(function(subscription) {
+                        document.querySelector('.debug').innerHTML = subscription;
                         // Set user subscription
                         that.postData(subscription.subscriptionId, function ( data ) {
                             // show curl command
@@ -316,16 +317,12 @@
             };
             // Enalbe Button listener
             button.addEventListener('click', function(){
-                alert('init click')
                 navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
-                    alert('service work then')
                     if(that.data){
-                        alert('unsubscribe')
                         that.unsubscribe( function ( success ) {
                             success && buttonState() && tagsState();
                         });
                     }else{
-                        alert('subscribe')
                         that.subscribe( function ( success ) {
                             success && buttonState() && tagsState();
                         });
