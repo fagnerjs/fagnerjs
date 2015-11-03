@@ -63,13 +63,13 @@
         getSubscribe : function ( callback ) {
             navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
                 serviceWorkerRegistration.pushManager.getSubscription().then(function(pushSubscription) {
-                    /*
-                    if(!pushSubscription.subscriptionId){
-                        var endpointSections = pushSubscription.endpoint.split('/');
-                        pushSubscription.subscriptionId = endpointSections[endpointSections.length - 1];
+                    if(pushSubscription){
+                        if(!pushSubscription.subscriptionId){
+                            var endpointSections = pushSubscription.endpoint.split('/');
+                            pushSubscription.subscriptionId = endpointSections[endpointSections.length - 1];
+                        }
                     }
-                    */
-                    document.querySelector('.debug').innerHTML = pushSubscription.endpoint;
+                    document.querySelector('.debug').innerHTML = JSON.stringify(pushSubscription);
                     callback instanceof Function && callback.call( null, pushSubscription);
                 }).catch(function(e) {
                     console.warn('Error thrown while unsubscribing from ' + 'push messaging.', e);
