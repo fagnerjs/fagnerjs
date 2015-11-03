@@ -1,12 +1,51 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Push Notifications</title>
-  </head>
-  <body>
-    <script src="main.js"></script>
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Push UOL</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link rel="manifest" href="manifest.json?v1">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	</head>
+	<body>
+		<div class="container" id="panel-notifications">
+			<div class="form-group">
+				<button id="enable-notification" class="btn btn-lg btn-primary">Habilitar notificações</button>
+			</div>
+			<hr>
+			<div class="main">
+				<form>
+					<div class="form-group">
+						<label class="checkbox-inline">
+							<input type="checkbox" name="tags" value="esporte"> Esporte
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" name="tags" value="noticias"> Noticias
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" name="tags" value="entretenimento"> Entretenimento
+						</label>
+					</div>
+				  	<div class="form-group">
+					    <label>Registration ID</label>
+					    <p class="form-control-static"></p>
+				  	</div>
+				</form>
+				<hr>
+				<div>
+					<h4>cURL</h4>
+					<code></code>
+				</div>
+			</div>
+			<!-- 
+			<div class="form-group">
+				<button id="update-configs" class="btn btn-lg btn-success">salvar</button>
+			</div>
+			-->
+		</div>
+		<script src="https://fagnerjs.github.io/fagnerjs/v2/main.js" type="text/javascript"></script>
+	</body>
 </html>
