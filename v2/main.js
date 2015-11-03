@@ -18,6 +18,10 @@
                 serviceWorkerRegistration.pushManager.subscribe({userVisibleOnly: true})
                     .then(function(subscription) {
                         document.querySelector('.debug').innerHTML = JSON.stringify(subscription);
+
+                        if(!subscription.subscriptionId){
+                          subscription.subscriptionId = subscription.endpoint.replace(/sub^(.*\:)/,'');
+                        }
                         // Set user subscription
                         that.postData(subscription.subscriptionId, function ( data ) {
                             // show curl command
