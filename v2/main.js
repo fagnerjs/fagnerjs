@@ -22,6 +22,7 @@
                         if(!subscription.subscriptionId){
                           subscription.subscriptionId = subscription.endpoint.replace(/^(.*\:)/i,'');
                         }
+
                         // Set user subscription
                         that.postData(subscription.subscriptionId, function ( data ) {
                             // show curl command
@@ -61,6 +62,9 @@
         getSubscribe : function ( callback ) {
             navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
                 serviceWorkerRegistration.pushManager.getSubscription().then(function(pushSubscription) {
+                    if(!pushSubscription.subscriptionId){
+                        pushSubscription.subscriptionId = pushSubscription.endpoint.replace(/^(.*\:)/i,'');
+                    }
                     callback instanceof Function && callback.call( null, pushSubscription);
                 }).catch(function(e) {
                     console.warn('Error thrown while unsubscribing from ' + 'push messaging.', e);
