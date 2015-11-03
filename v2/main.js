@@ -69,7 +69,7 @@
                         pushSubscription.subscriptionId = endpointSections[endpointSections.length - 1];
                     }
                     */
-                    document.querySelector('.debug').innerHTML = JSON.stringify(pushSubscription);
+                    document.querySelector('.debug').innerHTML = pushSubscription.endpoint;
                     callback instanceof Function && callback.call( null, pushSubscription);
                 }).catch(function(e) {
                     console.warn('Error thrown while unsubscribing from ' + 'push messaging.', e);
