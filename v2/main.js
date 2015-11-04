@@ -263,6 +263,27 @@
             return true;
         },
         /**
+         * Get browser version
+         * @method getBrowserVersion
+         * @return {String} browser version
+         */
+        getBrowserVersion : function() {
+            var ua = navigator.userAgent, tem,
+                M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+            if (/trident/i.test(M[1])) {
+                tem =  /\brv[ :]+(\d+)/g.exec(ua) || [];
+                return 'IE '+(tem[1] || '');
+            }
+            if (M[1] === 'Chrome') {
+                tem = ua.match(/\bOPR\/(\d+)/)
+                if(tem!= null) return 'Opera '+tem[1];
+            }
+            M = M[2] ? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+            if((tem= ua.match(/version\/([.\d]+)/i))!= null)
+                M.splice(1, 1, tem[1]);
+            return M.join(' ');
+        },
+        /**
          * It makes a request data
          * @method request
          * @param {String} url Url to request
@@ -358,7 +379,7 @@
             that.setCookie('meuTime', 6);
 
             if('serviceWorker' in navigator) {  
-                navigator.serviceWorker.register('https://fagnerjs.github.io/fagnerjs/v2/service-worker.js').then(function(){
+                navigator.serviceWorker.register('./service-worker.js').then(function(){
                     // verifies that supports notifications
                     if (!('showNotification' in ServiceWorkerRegistration.prototype)) {  
                         console.warn('Notifications aren\'t supported.');
